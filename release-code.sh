@@ -12,7 +12,6 @@ read -p "Enter the new version: " NEW_VERSION
 
 git checkout develop
 git pull origin develop
-git branch release/$NEW_VERSION
 
 # Update version in package.json
 if [ "$TECHNOLOGY" = "Java" ]; then
@@ -34,7 +33,7 @@ else
     echo "Invalid technology selection."
 fi
 
-
+git branch release/$NEW_VERSION
 
 # Commit and tag the release
 git add package.json
@@ -46,6 +45,7 @@ git merge --no-ff "release/$NEW_VERSION" -m "Merge release $NEW_VERSION to main"
 git tag "$NEW_VERSION"
 git push origin main
 git push origin "$NEW_VERSION"
+git push origin release/$NEW_VERSION
 
 # Merge to develop branch
 git checkout develop
