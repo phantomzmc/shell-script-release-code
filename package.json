@@ -1,6 +1,10 @@
 {
   "name": "shell-script-relese-code",
+<<<<<<< HEAD
   "version": "0.0.8",
+=======
+  "version": "0.0.9",
+>>>>>>> feature/test-get-current-branch
   "description": "",
   "main": "index.js",
   "scripts": {
