@@ -39,12 +39,11 @@ fi
 # Commit and tag the release
 git add package.json
 git commit -m "Update version to $NEW_VERSION"
-git tag "$NEW_VERSION"
-
 
 # Merge to main branch
 git checkout main
 git merge --no-ff "release/$NEW_VERSION" -m "Merge release $NEW_VERSION to main"
+git tag "$NEW_VERSION"
 git push origin main
 git push origin "$NEW_VERSION"
 
@@ -54,7 +53,7 @@ git merge --no-ff "release/$NEW_VERSION" -m "Merge release $NEW_VERSION to devel
 git push origin develop
 
 # Clean up the release branch
-# git branch -D "release/$NEW_VERSION"
+git branch -D "release/$NEW_VERSION"
 # git push origin --delete "release/$NEW_VERSION"
 
 echo "Release $NEW_VERSION successfully created and merged!"
